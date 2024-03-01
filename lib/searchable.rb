@@ -17,9 +17,7 @@ module Searchable
         iterations += 1
         middle = (i + j) / 2
 
-        if element == list[middle]
-          return middle
-        end
+        return middle if element == list[middle]
 
         if element < list[middle]
           j = middle - 1
