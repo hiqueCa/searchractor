@@ -11,10 +11,8 @@ module Searchable
     def b_search(element)
       i = 0
       j = list.length - 1
-      iterations = 0
 
       while i <= j
-        iterations += 1
         middle = (i + j) / 2
 
         return middle if element == list[middle]
