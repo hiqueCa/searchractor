@@ -1,4 +1,4 @@
-module Searches
+module Searchable
   def self.included(base)
     base.class_eval do
       attr_reader :list
