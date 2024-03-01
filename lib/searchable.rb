@@ -18,9 +18,6 @@ module Searchable
         middle = (i + j) / 2
 
         if element == list[middle]
-          puts "Element found in position #{middle}.\n"
-          puts "#{iterations} iterations needed.\n"
-
           return middle
         end
 
@@ -30,8 +27,6 @@ module Searchable
           i = middle + 1
         end
       end
-
-      puts "Element not present in list."
     end
   end
 end
