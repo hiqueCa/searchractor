@@ -48,11 +48,11 @@ To use `searchable`, simply include the module `Searchable` in your class defini
    ```
 
 3. **Perform binary search:**
-   You can now utilize the binary search functionality provided by `searchable`.
+   You can now utilize the `#b_search` method provided by `searchable`.
 
    ```ruby
-   searchable_class = SearchableClass.new([1, 2, 4, 7, 9, 11, 25])
-   index = searchable_class.binary_search(7)
+   searchable_class_instance = SearchableClass.new([1, 2, 4, 7, 9, 11, 25])
+   index = searchable_class_instance.b_search(7)
    puts "Element found at index: #{index}" if index
    ```
 
@@ -62,14 +62,12 @@ To use `searchable`, simply include the module `Searchable` in your class defini
    Element found at index: 3
    ```
 
-   If the element is not found, `#binary_search` will return `nil`.
+   If the element is not found, `#b_search` will return `nil`.
 
 ## Example
 Here's a more straight forward example demonstrating the usage of `searchable`:
 
 ```ruby
-require 'searchable'
-
 class SearchableClass
   include Searchable
 
@@ -78,8 +76,8 @@ class SearchableClass
   end
 end
 
-searchable_class = SearchableClass.new([1, 3, 5, 7, 9, 11, 13])
-index = searchable_class.binary_search(7)
+searchable_class_instance = SearchableClass.new([1, 3, 5, 7, 9, 11, 13])
+index = searchable_class_instance.b_search(7)
 puts "Element found at index: #{index}" if index
 ```
 
