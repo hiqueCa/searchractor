@@ -1,13 +1,38 @@
+# Public: Searchable's methods.
 module Searchable
+  # Internal: Add Searchable's behaviour in the including class.
   def self.included(base)
     base.class_eval do
+      # Public: Defines an initialized @list as readable in the including class.
+      # Same as doing the following in the calling class:
+      #
+      # class CallingClass
+      #   attr_reader :list
+      #
+      #   def initialize(list)
+      #     @list = list
+      #   end
+      # end
       attr_reader :list
 
       include InstanceMethods
     end
   end
 
+  # Internal: Searchable's instance methods
   module InstanceMethods
+    # Public: Search for a given element in an initialized list of sorted elements.
+    #
+    # Examples
+    #
+    #   searchable_= SearchableClass.new([1, 2, 3, 5, 8])
+    #
+    #   searchable.b_search(5) => 3
+    #
+    #   searchable.b_search(10) => nil
+    #
+    # Returns either the index of the searched element or the
+    #   nil if the element is not found
     def b_search(element)
       i = 0
       j = list.length - 1
