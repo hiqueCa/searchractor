@@ -31,8 +31,8 @@ module Searchable
     #
     #   searchable.b_search(10) => nil
     #
-    # Returns either the index of the searched element or the
-    #   nil if the element is not found
+    # Returns either the index of the searched element or nil if the element is not found
+    #  in the sorted list
     def b_search(element)
       i = 0
       j = list.length - 1
