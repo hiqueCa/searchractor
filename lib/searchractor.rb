@@ -1,6 +1,6 @@
-# Public: Searchable's methods.
-module Searchable
-  # Internal: Add Searchable's behaviour in the including class.
+# Public: Searchractor's methods.
+module Searchractor
+  # Internal: Add Searchractor's behaviour in the including class.
   def self.included(base)
     base.class_eval do
       # Public: Defines an initialized @list as readable in the including class.
@@ -19,13 +19,13 @@ module Searchable
     end
   end
 
-  # Internal: Searchable's instance methods
+  # Internal: Searchractor's instance methods
   module InstanceMethods
     # Public: Search for a given element in an initialized list of sorted elements.
     #
     # Examples
     #
-    #   searchable_= SearchableClass.new([1, 2, 3, 5, 8])
+    #   searchable = SearchractorClass.new([1, 2, 3, 5, 8])
     #
     #   searchable.b_search(5) => 3
     #

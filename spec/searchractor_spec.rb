@@ -1,6 +1,6 @@
-require 'searchable'
+require 'searchractor'
 
-describe Searchable do
+describe Searchractor do
   let(:searchable_class) { Class.new.send(:include, described_class) }
   let(:elements_list) { [1, 2, 3, 4, 5, 10] }
 
