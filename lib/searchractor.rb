@@ -1,3 +1,5 @@
+require 'searchractor/list_not_sorted_error'
+
 # Public: Searchractor's methods.
 module Searchractor
   # Internal: Add Searchractor's behaviour in the including class.
@@ -34,6 +36,8 @@ module Searchractor
     # Returns either the index of the searched element or nil if the element is not found
     #  in the sorted list
     def b_search(element)
+      validate_sorted_list
+      
       i = 0
       j = list.length - 1
 
@@ -70,6 +74,12 @@ module Searchractor
 
         return i if element == list[i]
       end
+    end
+
+    private
+
+    def validate_sorted_list
+      raise Searchractor::ListNotSortedError if list.sort != list
     end
   end
 end
