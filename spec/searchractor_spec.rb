@@ -25,4 +25,22 @@ describe Searchractor do
       it { is_expected.to be_nil }
     end
   end
+
+  describe '#l_search' do
+    subject do
+      searchable_class.new(elements_list).l_search(searched_element)
+    end
+
+    context 'when searched element is present in elements list' do
+      let(:searched_element) { 2 }
+
+      it { is_expected.to eq(elements_list.index(searched_element)) }
+    end
+
+    context 'when searched element is not present in elements list' do
+      let(:searched_element) { 6 }
+
+      it { is_expected.to be_nil }
+    end
+  end
 end

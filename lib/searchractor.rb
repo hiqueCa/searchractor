@@ -49,5 +49,27 @@ module Searchractor
         end
       end
     end
+    
+    # Public: Use linear search to look for an element in an initialized list of elements.
+    #
+    # Examples:
+    #
+    #   searchable = SearchractorClass.new([1, 4, 3, 8, 6])
+    #
+    #   searchable.l_search(3) => 2
+    #
+    #   searchable.l_search(10) => nil
+    # 
+    # Returns either the index of the searched element or nil if the element is not found
+    #  in the list
+    def l_search(element)
+      i = 0
+
+      while i <= list.length - 1
+        i += 1
+
+        return i if element == list[i]
+      end
+    end
   end
 end
