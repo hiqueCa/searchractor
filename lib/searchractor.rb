@@ -78,6 +78,13 @@ module Searchractor
 
     private
 
+    # Private: Validation to check if searchable list is indeed sorted.
+    # 
+    # Used by search_methods that require previous sorted list of elements,
+    #  such as #b_search.
+    #
+    # Raises an Searchractor::ListNotSortedError if initialized list of elements
+    #  is not sorted.
     def validate_sorted_list
       raise Searchractor::ListNotSortedError if list.sort != list
     end
