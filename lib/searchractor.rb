@@ -21,7 +21,7 @@ module Searchractor
 
   # Internal: Searchractor's instance methods
   module InstanceMethods
-    # Public: Search for a given element in an initialized list of sorted elements.
+    # Public: Use binary search to look for an element in an initialized list of sorted elements.
     #
     # Examples
     #
