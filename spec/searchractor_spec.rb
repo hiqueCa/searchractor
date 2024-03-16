@@ -24,6 +24,15 @@ describe Searchractor do
 
       it { is_expected.to be_nil }
     end
+
+    context 'when a non-sorted list of elements is searched through' do
+      let(:searched_element) { 2 }
+      let(:elements_list) { [2, 1, 5, 3, 8] }
+
+      it 'raises an Searchractor::ElementsListNotSorted error' do
+        expect { subject }.to raise_error(Searchractor::ListNotSortedError, 'The list of elements is not sorted.')
+      end
+    end
   end
 
   describe '#l_search' do
