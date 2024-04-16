@@ -16,77 +16,72 @@ module Searchractor
       #   end
       # end
       attr_reader :list
-
-      include InstanceMethods
     end
   end
 
-  # Internal: Searchractor's instance methods
-  module InstanceMethods
-    # Public: Use binary search to look for an element in an initialized list of sorted elements.
-    #
-    # Examples
-    #
-    #   searchable = SearchractorClass.new([1, 2, 3, 5, 8])
-    #
-    #   searchable.b_search(5) => 3
-    #
-    #   searchable.b_search(10) => nil
-    #
-    # Returns either the index of the searched element or nil if the element is not found
-    #  in the sorted list
-    def b_search(element)
-      validate_sorted_list
-      
-      i = 0
-      j = list.length - 1
-
-      while i <= j
-        middle = (i + j) / 2
-
-        return middle if element == list[middle]
-
-        if element < list[middle]
-          j = middle - 1
-        else
-          i = middle + 1
-        end
-      end
-    end
+  # Public: Use binary search to look for an element in an initialized list of sorted elements.
+  #
+  # Examples
+  #
+  #   searchable = SearchractorClass.new([1, 2, 3, 5, 8])
+  #
+  #   searchable.b_search(5) => 3
+  #
+  #   searchable.b_search(10) => nil
+  #
+  # Returns either the index of the searched element or nil if the element is not found
+  #  in the sorted list
+  def b_search(element)
+    validate_sorted_list
     
-    # Public: Use linear search to look for an element in an initialized list of elements.
-    #
-    # Examples:
-    #
-    #   searchable = SearchractorClass.new([1, 4, 3, 8, 6])
-    #
-    #   searchable.l_search(3) => 2
-    #
-    #   searchable.l_search(10) => nil
-    # 
-    # Returns either the index of the searched element or nil if the element is not found
-    #  in the list
-    def l_search(element)
-      i = 0
+    i = 0
+    j = list.length - 1
 
-      while i <= list.length - 1
-        i += 1
+    while i <= j
+      middle = (i + j) / 2
 
-        return i if element == list[i]
+      return middle if element == list[middle]
+
+      if element < list[middle]
+        j = middle - 1
+      else
+        i = middle + 1
       end
     end
+  end
+  
+  # Public: Use linear search to look for an element in an initialized list of elements.
+  #
+  # Examples:
+  #
+  #   searchable = SearchractorClass.new([1, 4, 3, 8, 6])
+  #
+  #   searchable.l_search(3) => 2
+  #
+  #   searchable.l_search(10) => nil
+  # 
+  # Returns either the index of the searched element or nil if the element is not found
+  #  in the list
+  def l_search(element)
+    i = 0
 
-    private
+    while i <= list.length - 1
+      i += 1
 
-    # Private: Validation to check if searchable list is indeed sorted.
-    # 
-    # Used by search_methods that require previous sorted list of elements,
-    #  such as #b_search.
-    #
-    # Raises an Searchractor::ListNotSortedError if initialized list of elements
-    #  is not sorted.
-    def validate_sorted_list
-      raise Searchractor::ListNotSortedError if list.sort != list
+      return i if element == list[i]
     end
+  end
+
+  private
+
+  # Private: Validation to check if searchable list is indeed sorted.
+  # 
+  # Used by search_methods that require previous sorted list of elements,
+  #  such as #b_search.
+  #
+  # Raises an Searchractor::ListNotSortedError if initialized list of elements
+  #  is not sorted.
+  def validate_sorted_list
+    raise Searchractor::ListNotSortedError if list.sort != list
   end
 end
