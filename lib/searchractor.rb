@@ -15,8 +15,15 @@ module Searchractor
       #     @list = list
       #   end
       # end
-      attr_reader :list
+      attr_reader :list, :search_results
+
+      extend ClassMethods
     end
+  end
+
+  def initialize(list)
+    @list = list
+    @search_results = {}
   end
 
   # Public: Use binary search to look for an element in an initialized list of sorted elements.
@@ -83,5 +90,23 @@ module Searchractor
   #  is not sorted.
   def validate_sorted_list
     raise Searchractor::ListNotSortedError if list.sort != list
+  end
+
+  module ClassMethods
+    def search_by(*searches)
+      @searches = searches
+    end
+
+    def search(list: , element: )
+      searchable_instance = new(list)
+
+      @searches.each do |search|
+        search_result = searchable_instance.send(search, element)
+
+        searchable_instance.search_results[search] = search_result
+      end
+
+      searchable_instance.search_results
+    end
   end
 end
